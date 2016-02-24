@@ -13,10 +13,10 @@
    
 	<item>
 	  <title>First Post</title>
-	  <link>/blog//first_post</link>
+	  <link>//first_post</link>
 	  <author>Brian Su</author>
 	  <pubDate>2016-02-23T02:18:00-08:00</pubDate>
-	  <guid>/blog//first_post</guid>
+	  <guid>//first_post</guid>
 	  <description><![CDATA[
 	     <p>Here is my first blog post.</p>
 
