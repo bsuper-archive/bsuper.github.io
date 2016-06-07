@@ -11,8 +11,8 @@
     <pubDate>Mon, 06 Jun 2016 00:00:00 +0000</pubDate>
     <item>
       <title>Building an Enigma Machine</title>
-      <link>http://bsu.me//first_post</link>
-      <description>During World War II, the Enigma machine was widely used by the Germans forces
+      <link>http://bsu.me//enigma</link>
+      <description>&lt;p&gt;During World War II, the Enigma machine was widely used by the Germans forces
 to communicate information amongst themselves. Believed by the Germans to be
 unbreakable, the Enigma had a series of rotors and a single reflector at the
 end. The first rotor would map the initial input into an output letter, which
@@ -21,7 +21,7 @@ reflector, which also maps its input to an output, the translation happens in
 reverse, where the output of the reflector is passed through the last rotor all
 the way to the first rotor, where it is then given back as an encoded letter.
 To decode, the encoded message would be passed through the Enigma machine with
-the same initial state, and the original message would show up.
+the same initial state, and the original message would show up.&lt;/p&gt;
 
 </description>
       <pubDate>Mon, 06 Jun 2016 00:00:00 +0000</pubDate>

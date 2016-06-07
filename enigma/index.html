@@ -132,7 +132,27 @@ the way to the first rotor, where it is then given back as an encoded letter.
 To decode, the encoded message would be passed through the Enigma machine with
 the same initial state, and the original message would show up.</p>
 
-<p><img src="assets/images/enigma1.png" alt="Enigma Demo" title="Enigma Demo"></p>
+<img src="assets/images/enigma1.png">
+
+<p>Okay, I simplified it a little bit. Before every letter is processed by the
+rotors, the first rotor rotates, and possibly the subsequent rotors too. Every
+rotor has a notch that it rotates the next rotor on. For example, Rotor II has
+notch E. This is predefined - otherwise, none of the Enigma operators would be
+able to transcribe messages from their counterparts. Thus, when Rotor II is on
+notch E, the next input that rotates Rotor II causes the subsequent rotor to
+rotate, increasing its notch. On the other hand, reflectors don't rotate.</p>
+
+<p>There's also the ring offset. Suppose we are abou to pass in A to a
+  rotor and the rotor is at notch C. In this case, the rotor treats A as C and
+  outputs the mapping for C, instead of A.</p>
+
+<p>In addition, there's also the plugboard (<i>Steckerbrett</i>) that is used
+  before the input is passed into the first rotor. Basically, the operator has
+  13 wires that can change any two pairs of letters. For example, an operator
+  can switch A for Z and Z for A.</p>
+
+<p>Also, quick note about the reflector. It's mapping is reversable, so if A
+  maps to D, then D maps to A.</p>
 
 
         </section>
@@ -166,15 +186,15 @@ the same initial state, and the original message would show up.</p>
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="http://twitter.com/share?text=Building an Enigma Machine&amp;url=http://bsu.me/first_post"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Building an Enigma Machine&amp;url=http://bsu.me/enigma"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bsu.me/first_post"
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bsu.me/enigma"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bsu.me/first_post"
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bsu.me/enigma"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
