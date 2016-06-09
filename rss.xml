@@ -12,8 +12,8 @@
     <item>
       <title>Building an Enigma Machine</title>
       <link>http://bsu.me//enigma</link>
-      <description>&lt;p&gt;During World War II, the Enigma machine was widely used by the Germans forces
-to communicate information amongst themselves. Believed by the Germans to be
+      <description>&lt;p&gt;During World War II, the Enigma machine was widely used by the German forces
+to communicate sensitive information amongst themselves. Believed by the Germans to be
 unbreakable, the Enigma had a series of rotors and a single reflector at the
 end. The first rotor would map the initial input into an output letter, which
 is then passed to the subsequent rotors in similar fashion. Upon reaching the
