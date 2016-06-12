@@ -18,12 +18,15 @@
 	  <pubDate>2016-06-12T00:00:00+00:00</pubDate>
 	  <guid>//podcasts</guid>
 	  <description><![CDATA[
-	     1. Planet Money
-2. Startup
-3. Talking Machines
-4. Partially Derivative
-5. Serial
-6. Reply All
+	     <ol>
+
+<li>Planet Money</li>
+<li>Startup</li>
+<li>Talking Machines</li>
+<li>Partially Derivative</li>
+<li>Serial</li>
+<li>Reply All</li>
+</ol>
 
 	  ]]></description>
 	</item>
