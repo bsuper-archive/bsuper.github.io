@@ -19,7 +19,7 @@
 	  <guid>//podcasts</guid>
 	  <description><![CDATA[
 	     <p>
-    For the past two summers, I've been driving a lot. This summer, I spend at least 40 minutes in my car and about 2 hours on a bus to work each workday. That's a lot of time to kill! What I can't stand are the songs they play on the radio - 94.9, 97.3,
+    This summer, I spend at least 40 minutes in my car and about 2 hours on a bus to work each workday. That's a lot of time to kill! What I can't stand are the songs they play on the radio - 94.9, 97.3,
     99.7, 101.3, 101.7. They are repetitive and trashy, maybe except Taylor Swift, whom I usually enjoy listening to. As I spend more time on the road, I have realized that podcasts are the way to go for long commutes. Depending on your selection, they
     can be interesting, educational, and make you feel like you've learned something useful during the day. Here are some my recommendations, which I'll continually update over time as I discover more:
 </p>
@@ -58,10 +58,20 @@
             you ever wanted to know about startups or wanted to start one yourself.
         </p>
     </li>
-    <li>Talking Machines</li>
-    <li>Partially Derivative</li>
-    <li>Serial</li>
     <li>Reply All</li>
+    <li>
+      <b><a href="http://www.thetalkingmachines.com">Talking Machines</a></b>
+      <p>This is a new podcast that I recently discovered and focuses on the theory and applications of machine learning. It appears to be both academic and practical and I'd love to check this out more.</p>
+    </li>
+    <li>
+      <b><a href="http://partiallyderivative.com">Partially Derivative</a></b>
+      <p>I've also discovered this one recently. This one focuses on the world of data science.</p>
+    </li>
+    <li>
+      <b>Serial</b>
+      <p>I'm looking forward to listening to this podcast. Each season tells a captivating story from the beginning to the end. I'll let you guys know what I think soon!
+      </p>
+    </li>
 </ol>
 
 	  ]]></description>
