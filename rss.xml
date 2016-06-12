@@ -6,12 +6,12 @@
   xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
   <channel>
     <title>Brian's Blog</title>
-    <link>http://bsu.me/</link>
+    <link>http://blog.bsu.me/</link>
     <description>A place where I'll share my latest travel stories, academic thoughts, and personal musings.</description>
     <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
     <item>
       <title>Great Podcasts I Recommend</title>
-      <link>http://bsu.me//podcasts</link>
+      <link>http://blog.bsu.me//podcasts</link>
       <description>&lt;p&gt;
     This summer, I spend at least 40 minutes in my car and about 2 hours on a bus to work each workday. That's a lot of time to kill! What I can't stand are the songs they play on the radio - 94.9, 97.3, 99.7, 101.3, 101.7. They are repetitive and trashy,
     maybe except Taylor Swift, whom I usually enjoy listening to. As I spend more time on the road, I have realized that podcasts are the way to go for long commutes. Depending on your selection, they can be interesting, educational, and make you feel
@@ -110,7 +110,7 @@
     </item>
     <item>
       <title>Building an Enigma Machine</title>
-      <link>http://bsu.me//enigma</link>
+      <link>http://blog.bsu.me//enigma</link>
       <description>&lt;p&gt;During World War II, the Enigma machine was widely used by the German forces
 to communicate sensitive information amongst themselves. Believed by the Germans to be
 unbreakable, the Enigma had a series of rotors and a single reflector at the
