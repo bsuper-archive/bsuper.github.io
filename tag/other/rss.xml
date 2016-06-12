@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>bsu.me/</title>
+   
+   <link>http://bsu.me/</link>
+   <description>A place where I'll share my latest travel stories, academic thoughts, and personal musings.</description>
+   <language>en-us</language>
+   <managingEditor> Brian Su</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Great Podcasts I Recommend</title>
+	  <link>//podcasts</link>
+	  <author>Brian Su</author>
+	  <pubDate>2016-06-12T00:00:00+00:00</pubDate>
+	  <guid>//podcasts</guid>
+	  <description><![CDATA[
+	     1. Planet Money
+2. Startup
+3. Talking Machines
+4. Partially Derivative
+5. Serial
+6. Reply All
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

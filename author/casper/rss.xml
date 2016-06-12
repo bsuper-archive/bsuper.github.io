@@ -12,6 +12,23 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>Great Podcasts I Recommend</title>
+	  <link>//podcasts</link>
+	  <author>Brian Su</author>
+	  <pubDate>2016-06-12T00:00:00+00:00</pubDate>
+	  <guid>//podcasts</guid>
+	  <description><![CDATA[
+	     1. Planet Money
+2. Startup
+3. Talking Machines
+4. Partially Derivative
+5. Serial
+6. Reply All
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>Building an Enigma Machine</title>
 	  <link>//enigma</link>
 	  <author>Brian Su</author>

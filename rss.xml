@@ -8,7 +8,22 @@
     <title>Brian's Blog</title>
     <link>http://bsu.me/</link>
     <description>A place where I'll share my latest travel stories, academic thoughts, and personal musings.</description>
-    <pubDate>Mon, 06 Jun 2016 00:00:00 +0000</pubDate>
+    <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+    <item>
+      <title>Great Podcasts I Recommend</title>
+      <link>http://bsu.me//podcasts</link>
+      <description>1. Planet Money
+2. Startup
+3. Talking Machines
+4. Partially Derivative
+5. Serial
+6. Reply All
+
+
+</description>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      <dc:date>2016-06-12T00:00:00+00:00</dc:date>
+    </item>
     <item>
       <title>Building an Enigma Machine</title>
       <link>http://bsu.me//enigma</link>
@@ -27,6 +42,6 @@ the same initial state, and the original message would show up.&lt;/p&gt;
       <pubDate>Mon, 06 Jun 2016 00:00:00 +0000</pubDate>
       <dc:date>2016-06-06T00:00:00+00:00</dc:date>
     </item>
-    <dc:date>2016-06-06T00:00:00+00:00</dc:date>
+    <dc:date>2016-06-12T00:00:00+00:00</dc:date>
   </channel>
 </rss>
