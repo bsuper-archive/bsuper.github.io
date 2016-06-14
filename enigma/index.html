@@ -121,38 +121,40 @@
 
         <section class="post-content">
 
-            <p>During World War II, the Enigma machine was widely used by the German forces
-to communicate sensitive information amongst themselves. Believed by the Germans to be
-unbreakable, the Enigma had a series of rotors and a single reflector at the
-end. The first rotor would map the initial input into an output letter, which
-is then passed to the subsequent rotors in similar fashion. Upon reaching the
-reflector, which also maps its input to an output, the translation happens in
-reverse, where the output of the reflector is passed through the last rotor all
-the way to the first rotor, where it is then given back as an encoded letter.
-To decode, the encoded message would be passed through the Enigma machine with
-the same initial state, and the original message would show up.</p>
+            <p><i>This post is still a work in progress!</i></p>
+
+<p>During World War II, the Enigma machine was widely used by the German forces to communicate
+    sensitive information amongst themselves. Believed by the Germans to be unbreakable,
+    the Enigma had a series of rotors and a single reflector at the end. The first
+    rotor would map the initial input into an output letter, which is then passed
+    to the subsequent rotors in similar fashion. Upon reaching the reflector, which
+    also maps its input to an output, the translation happens in reverse, where the
+    output of the reflector is passed through the last rotor all the way to the first
+    rotor, where it is then given back as an encoded letter. To decode, the encoded
+    message would be passed through the Enigma machine with the same initial state,
+    and the original message would show up.</p>
 
 <img src="https://raw.githubusercontent.com/bsuper/bsuper-jasper/master/assets/images/enigma/enigma1.png">
 
-<p>Okay, I simplified it a little bit. Before every letter is processed by the
-rotors, the first rotor rotates, and possibly the subsequent rotors too. Every
-rotor has a notch that it rotates the next rotor on. For example, Rotor II has
-notch E. This is predefined - otherwise, none of the Enigma operators would be
-able to transcribe messages from their counterparts. Thus, when Rotor II is on
-notch E, the next input that rotates Rotor II causes the subsequent rotor to
-rotate, increasing its notch. On the other hand, reflectors don't rotate.</p>
+<p>Okay, I simplified it a little bit. Before every letter is processed by the rotors,
+    the first rotor rotates, and possibly the subsequent rotors too. Every rotor
+    has a notch that it rotates the next rotor on. For example, Rotor II has notch
+    E. This is predefined - otherwise, none of the Enigma operators would be able
+    to transcribe messages from their counterparts. Thus, when Rotor II is on notch
+    E, the next input that rotates Rotor II causes the subsequent rotor to rotate,
+    increasing its notch. On the other hand, reflectors don't rotate.</p>
 
-<p>There's also the ring offset. Suppose we are abou to pass in A to a
-  rotor and the rotor is at notch C. In this case, the rotor treats A as C and
-  outputs the mapping for C, instead of A.</p>
+<p>There's also the ring offset. Suppose we are abou to pass in A to a rotor and the
+    rotor is at notch C. In this case, the rotor treats A as C and outputs the mapping
+    for C, instead of A.</p>
 
-<p>In addition, there's also the plugboard (<i>Steckerbrett</i>) that is used
-  before the input is passed into the first rotor. Basically, the operator has
-  13 wires that can change any two pairs of letters. For example, an operator
-  can switch A for Z and Z for A.</p>
+<p>In addition, there's also the plugboard (<i>Steckerbrett</i>) that is used before
+    the input is passed into the first rotor. Basically, the operator has 13 wires
+    that can change any two pairs of letters. For example, an operator can switch
+    A for Z and Z for A.</p>
 
-<p>Also, quick note about the reflector. It's mapping is reversable, so if A
-  maps to D, then D maps to A.</p>
+<p>Also, quick note about the reflector. It's mapping is reversable, so if A maps to
+    D, then D maps to A.</p>
 
 
         </section>
@@ -222,6 +224,13 @@ rotate, increasing its notch. On the other hand, reflectors don't rotate.</p>
     
     <!-- [[! /next_post ]] -->
     <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/asia1/plane.jpg)" href="/asia1">
+            <section class="post">
+                <h2>Asia Winter 2016. The Beginning.</h2>
+                <p>Last winter, in the span of 27 days, I traveled to Asia and visited 6...</p>
+            </section>
+        </a>
     
     <!-- [[! /prev_post ]] -->
 </aside>
