@@ -125,37 +125,39 @@
 
         <section class="post-content">
 
-            <p>
-  <i>By Brian Su, Cem Koc, and Can Koc (Echochrome)</i>
-</p>
+            <h3> Why play video games? </h3>
 
-<h3>Why play video games?</h3>
-<p>
-  You may wonder why companies like Google and Facebook have research teams that try to outperform others (and themselves) on video games, such as Atari or Doom. I mean, why would some of the best minds of our day spend hours tackling how to be better at video games?
-</p>
-<p>
-  Turns out, the eventual goal is to use reinforcement learning to allow robots and other machines to interact with complex environments. In short, games are a simplified abstraction of a complex environment machines have to learn and adapt to. Once we have successfully trained a model to play a game, applying the model to a real-world problem is a natural extension. For example, Google’s DeepMind has trained reinforcement learning models to master Atari games, beat a 9-dan Go professional, and, more recently, reduced the power consumption of Google’s data centers by 15%. Moreover,  games provide two advantages when used for deep reinforcement learning.
-</p>
-<p>
-  First, since machines can quickly run through games, we are able to accumulate much more data from playing games compared to attempting to collect data in the real-world. In particular, this is beneficial when using deep neural networks they require lots of data to be able to perform successfully.
-</p>
-<p>
-  Second, games provide a visual representation of an environment. When humans play games, they learn how to play and make decisions based on what they see on the screen. Cameras are machines’ equivalent of human eyes, capturing a representation of the environment as an image, and machine learning has been successfully done to detect objects in the images. Thus, for humans and these machine learning models, the input is the raw pixels from images. For the task of deep reinforcement learning, most games provide a visual representation capturing most of the state of the game. Like how humans learn to play games, the goal is to use deep reinforcement learning and allow machines only use the visual representation to successfully complete the game. This is often referred to as end-to-end training.
-</p>
-<p>
-  CAD2RL is one recent example where researchers, using deep reinforcement learning, trained a drone to navigate through corridors using only simulation images and achieved decent success on flying through the hallways of Cory Hall. By using simulation images, the authors exposed the drone to many complex environments and were able to “reset” the environment when the drone crashed in simulation without any damage to the drone in real life.
-</p>
+<p>You may wonder why companies like Google and Facebook have research teams that try to outperform others (and themselves) on video games, such as Atari or Doom. I mean, why would some of the best minds of our day spend hours tackling how to be better at video games?</p>
+
+<p>Turns out, the eventual goal is to use reinforcement learning to allow robots and other machines to interact with complex environments. In short, games are a simplified abstraction of complex environments machines have to learn and adapt to. Once we have successfully trained a model to play a game, applying the model to a real-world problem is a natural extension. For example, Google’s DeepMind has trained reinforcement learning models to master Atari games, beat a 9-dan Go professional, and, more recently, reduced the power consumption of Google’s data centers by 15%. Moreover, games provide two advantages when used for deep reinforcement learning.</p>
+
+<p>First, since machines can quickly run through games, we are able to accumulate much more data from playing games compared to attempting to collect data in the real-world. In particular, this is beneficial when using deep neural networks they require lots of data to be able to perform successfully.</p>
+
+<p>Second, games provide a visual representation of an environment. When humans play games, they learn how to play and make decisions based on what they see on the screen. Cameras are machines’ equivalent of human eyes, capturing a representation of the environment as an image, and machine learning has been successfully done to detect objects in the images. Thus, for humans and these machine learning models, the input is the raw pixels from images. For the task of deep reinforcement learning, most games provide a visual representation capturing most of the state of the game. Like how humans learn to play games, the goal is to use deep reinforcement learning and allow machines only use the visual representation to successfully complete the game. This is often referred to as end-to-end training.</p>
+
+<p>(CAD)2RL is one recent example where researchers, using deep reinforcement learning, trained a drone to navigate through corridors using only simulation images and achieved decent success on flying through the hallways of Cory Hall. By using simulation images, the authors exposed the drone to many complex environments and were able to “reset” the environment when the drone crashed in simulation without any damage to the drone in real life.</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nXBWmzFrj5s" frameborder="0" allowfullscreen></iframe>
 
-<h3>Deep Learning on Tensorflow and Keras</h3>
+<h3> What is Deep Reinforcement Learning? </h3>
 
-<img src="https://blog.keras.io/img/keras-tensorflow-logo.jpg" />
+<p> Recently, Deep Q-Networks have shown tremendous success in mastering games such as Atari games, Go, and Out Run. For games with a large number of states such as Go and Doom, modifications to the Deep Q-Network such as tree searching and providing internal game information  has been shown to improve training performance with Deep Q-Networks. </p>
 
-<p>
-Tensorflow is an open source software library for numerical computation developed by researchers at Google. Unfortunately, Tensorflow can be quite challenging to pick up for beginners. In this work, we use Keras, developed by another Googler Francois Chollet, which is a wrapper library for Tensorflow and Theano, and is much easier to use and understand. By using Keras, we make the trade-off for accessibility over nice Tensorflow features such as Tensorboard, which allows you to visualize the performance of models while training.
-</p>
-$$a^2 + b^2 = c^2$$
+<p> Our choice of Doom as our learning environment is mostly a personal preference. As OpenAI gym provides a simple common interface to a variety of environments, we could have chosen to apply DQN to anyone of the provided environments. We chose Doom because it provides a challenging environment and also because we like first person shooter games. And, it looks cool when a machine is able to beat all the bots. Just take a look at these videos .</p>
+
+
+<h3> Deep Q-Learning  and Double DQN </h3>
+
+<p> Deep Q-Learning was first popularized by this paper written by Mnih et al. from DeepMind. In this work they built a deep q-learning agent and trained it to play 49 Atari games using only pixels as inputs. This work quickly captured attention because it was one of the earliest demonstrations of an end-to-end trained agent using a deep neural network and pixels as inputs to take actions in a wide range of environments.</p>
+
+<p> Let’s quickly go over what we mean by deep q-learning.</p>
+
+<p> A function Q(s,a) over a policy returns an estimate of a total reward we would obtain by taking that action a from state s and then following some optimal policy at the landing state s' let’s call it Q*(s,a). When we have finite states Q-learning converges and finds the optimal policy at every state. However most of the problems we are trying to solve have infinite states hence it is impossible to store these in a table to lookup and converge to an optimal policy. Instead the idea that was discussed in the DeepMind paper [6] was to use a deep neural network to approximate the Q function.</p>
+
+[ Picture of a deep q-network]
+<img src=”assets/images/per/model_architecture.jpg” />
+
+<p> The idea here now is that given an experience (s,a,t,r,s') we need to approximate Q(s,a)using our neural network. We will forward pass it through our network to get predicted Q-values for the state-action pair namely Q(s,a).  Next we need to compare this to our target value hence we will forward pass the landing state s' and compute the target Q value as:</p>
 
 
         </section>
