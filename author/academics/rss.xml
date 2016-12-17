@@ -34,11 +34,11 @@
 
 <h3> Deep Reinforcement Learning, Deep Q-Learning,  and Double DQN </h3>
 
-<p> Deep Q-Learning was first popularized by this paper written by Mnih et al. from DeepMind. In this work they built a deep q-learning agent and trained it to play 49 Atari games using only pixels as inputs. This work quickly captured attention because it was one of the earliest demonstrations of an end-to-end trained agent using a deep neural network and pixels as inputs to take actions in a wide range of environments.</p>
+<p> Deep Q-Learning was first popularized <a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">this paper</a> written by Mnih et al. from DeepMind. In this work they built a deep q-learning agent and trained it to play 49 Atari games using only pixels as inputs. This work quickly captured attention because it was one of the earliest demonstrations of an end-to-end trained agent using a deep neural network and pixels as inputs to take actions in a wide range of environments.</p>
 
 <p> Let’s quickly go over what we mean by deep q-learning.</p>
 
-<p> A function Q(s,a) over a policy returns an estimate of a total reward we would obtain by taking that action a from state s and then following some optimal policy at the landing state s' let’s call it Q*(s,a). When we have finite states Q-learning converges and finds the optimal policy at every state. However most of the problems we are trying to solve have infinite states hence it is impossible to store these in a table to lookup and converge to an optimal policy. Instead the idea that was discussed in the DeepMind paper [6] was to use a deep neural network to approximate the Q function.</p>
+<p> A function Q(s,a) over a policy returns an estimate of a total reward we would obtain by taking that action a from state s and then following some optimal policy at the landing state s' let’s call it Q*(s,a). When we have finite states Q-learning converges and finds the optimal policy at every state. However most of the problems we are trying to solve have infinite states hence it is impossible to store these in a table to lookup and converge to an optimal policy. Instead the idea that was discussed in the <a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">DeepMind paper</a> was to use a deep neural network to approximate the Q function.</p>
 
 <img src= "/assets/images/per/model_architecture.jpg"/>
 
@@ -51,13 +51,13 @@
 <p>$$L = \frac{1}{2}[r + \gamma max_{a'}Q(s',a') - Q(s,a)]^2$$</p>
 
 <p>
-However one problem that authors of the DeepMind paper realised was that using a neural network to compute the Q function is unstable. To this end they used several stabilization methods with the goal of more stable policy learning. Here we are going to present a few of them as they will be useful for understanding what is to come.</p>
+However one problem that authors of the paper realized was that using a neural network to compute the Q function is unstable. To this end they used several stabilization methods with the goal of more stable policy learning. Here we are going to present a few of them as they will be useful for understanding what is to come.</p>
 
 <h4> Learning from Experience </h4>
 
 <p>One problem you might have guessed is that the experiences $$(s,a,t,r,s')$$ we use to train our network tend to be sequential in video games hence most of the times we will see the same or very similar states and states will be highly correlated. This means that we will update the q-values of experiences that are abundant but unimportant more often than important experiences. Another big problem is that as soon as we encounter an experience and use it to update our weights in the network we discard it. This is bad because less important experiences might come to us more often than more important experiences which will cause our network to  overfit.</p>
 
-<p>To solve this, this paper proposes that we simply remember experiences by storing them in a replay memory and randomly selecting experiences from the replay memory to train our network instead of using the most recent one. This is very similar to what is done usually in supervised machine learning tasks.</p>
+<p>To solve this, <a href="http://www.dtic.mil/dtic/tr/fulltext/u2/a261434.pdf">this paper from Lin et al.</a> proposes that we simply remember experiences by storing them in a replay memory and randomly selecting experiences from the replay memory to train our network instead of using the most recent one. This is very similar to what is done usually in supervised machine learning tasks.</p>
 
 <h4> Two Separate Networks </h4>
 
@@ -83,7 +83,7 @@ $$i\neq j $$
 
 
 
-<p>This makes it susceptible to choosing wrong actions and propagating these q-values to compute other q-values will create a bias which will lead to overestimation of some q-values. In the paper by Hasselt et al. the proposed solution is to use two separate functions learned independently. Use the first function to maximize and second one to approximate the value. We already have two different networks that are different: the q-network and target q-network. Our new target q-value will be:</p>
+<p>This makes it susceptible to choosing wrong actions and propagating these q-values to compute other q-values will create a bias which will lead to overestimation of some q-values. In the <a href="https://arxiv.org/pdf/1509.06461v3.pdf">paper by Hasselt et al.</a> the proposed solution is to use two separate functions learned independently. Use the first function to maximize and second one to approximate the value. We already have two different networks that are different: the q-network and target q-network. Our new target q-value will be:</p>
 
 	<p> $$Q^*(s,a) = r + \gamma Q^T(s', argmax_{a}Q(s',a))$$ </p>
 
@@ -113,7 +113,7 @@ Tensorflow is an open source software library for numerical computation develope
 
 <h3> Prioritized Experience Replay on ViZDoom </h3>
 
-<p>Everything we talked above was to prepare the reader for this part. Prioritized Experience Replay (PER) is a very novel idea that tries to solve a simple but fundamental problem with how we train our q-network. Previously we discussed the importance of storing experiences in a replay memory and randomly picking them to update our parameters. The original DeepMind paper mentioned that some transitions are more important than others and the fact that we are discarding them after using once can mean we might never experience them. Perhaps if we learned from the transitions or experiences that are more important than we might be able to learn faster.
+<p>Everything we talked above was to prepare the reader for this part. Prioritized Experience Replay (PER) is a very novel idea by <a href"https://arxiv.org/pdf/1509.06461v3.pdf">Schaul et al.</a> that tries to solve a simple but fundamental problem with how we train our q-network. Previously we discussed the importance of storing experiences in a replay memory and randomly picking them to update our parameters. The original DeepMind paper mentioned that some transitions are more important than others and the fact that we are discarding them after using once can mean we might never experience them. Perhaps if we learned from the transitions or experiences that are more important than we might be able to learn faster.
 </p>
 <p>
 We would like to learn from the transitions that doesn’t fit well with our current network prediction but in reality since we are randomly picking transitions from the replay memory we might not learn from important ones.
