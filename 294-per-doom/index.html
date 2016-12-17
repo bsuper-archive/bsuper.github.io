@@ -203,7 +203,7 @@ $$i\neq j $$
 
 <p>Vizdoom is an reinforcement learning based research platform that lets you implement intelligent agents that can play doom given only screen images from the game play. </p>
 
-<img src="/assets/images/per/gameplaysnapshots.jpg"/>
+<img src="/assets/images/per/gameplay_snapshots.jpg"/>
 
 
 <p>In this project, we used Vizdoom for a very limited number of tasks since we were only interested in grabbing the raw images of the game play to train and test. In reality, Vizdoom offers a variety of options such as creating your own game scenarios, single and multiplayer gameplay along with many other game environments. Vizdoom also offers API’s for C++ , Python and Java.</p>
@@ -257,8 +257,17 @@ $$p_i = [TDerror(i) - \epsilon]^\alpha$$
 
 <p>Notice that implementation of PER is not very different than the implementation used in the DDQN paper by Hasselt et al. The only thing that is different is that the replay memory will not be a list storing experiences. We will use a priority queue to store the experiences to account for their priorities. This code sample puts a transition or an experience into our replay memory implemented as a priority queue.
 
-[ insert the code below ]
-
+<pre><code>def remember(self, transition, game_over):
+  transition_powered_priority = 1e-7 ** self.alpha
+  if self.memory:
+    transition_powered_priority = np.max(self.memory, 0)[2]
+  self.sum_powered_priorities += transition_powered_priority
+  # insert the transition with its priority into replay memory
+  self.memory.append([transition, game_over, transition_powered_priority])
+  if len(self.memory) > self.max_memory:
+    self.sum_powered_priorities -= self.memory[0][2]
+    def self.memory[0]
+</code></pre>
 
 <h4> Algorithm </h4>
 Here you can see the algorithm that was discussed in the PER paper.
@@ -353,7 +362,7 @@ Our results from training a prioritized experience replay on ddqn for defend the
 Prioritized Experience Replay is a method that rewards an agent for exploring its environment. Intuitively, by encouraging more exploration, the reinforcement learning agent will stumble onto novel kinds of environments that allow for greater rewards. Using Prioritized Experience Replay, the agent trains more frequently on experiences that yielded “unexpected"rewards. Our results from training a DDQN model with Prioritized Experience Replay confirm that this direction is promising.
 </p>
 <p>
-For future work, we would like to evaluate Prioritized Experience Replay(PER) on more complicated game modes of Doom such as “deathmatch."In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since ddqn training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
+For future work, we would like to evaluate Prioritized Experience Replay (PER) on more complicated game modes of Doom such as “deathmatch."In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since ddqn training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
 </p>
 
 <h3> Team Contributions </h3>
@@ -369,19 +378,6 @@ For future work, we would like to evaluate Prioritized Experience Replay(PER) on
 <h5>Brian Su (⅓ of the work)</h5>
 
 <p>Brian Su worked on implementing the ddqn and prioritized experience replay with Cem Koc. He also worked on formatting the report to turn it into a blog post.</p>
-
-<pre><code>
-def remember(self, transition, game_over):
-  transition_powered_priority = 1e-7 ** self.alpha
-  if self.memory:
-    transition_powered_priority = np.max(self.memory, 0)[2]
-  self.sum_powered_priorities += transition_powered_priority
-  # insert the transition with its priority into replay memory
-  self.memory.append([transition, game_over, transition_powered_priority])
-  if len(self.memory) > self.max_memory:
-    self.sum_powered_priorities -= self.memory[0][2]
-    def self.memory[0]
-</code></pre>
 
 
         </section>
