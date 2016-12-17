@@ -8,10 +8,10 @@
     <title>Brian's Blog</title>
     <link>http://blog.bsu.me/</link>
     <description>A place where I'll share my latest travel stories, academic thoughts, and personal musings.</description>
-    <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
+    <pubDate>Thu, 15 Dec 2016 00:00:00 +0000</pubDate>
     <item>
       <title>Prioritized Experience Replay Kills on Doom</title>
-      <link>http://blog.bsu.me//294-dqn-doom</link>
+      <link>http://blog.bsu.me//294-per-doom</link>
       <description>&lt;h3&gt;Why play video games?&lt;/h3&gt;
 &lt;p&gt;
   You may wonder why companies like Google and Facebook have research teams that try to outperform others (and themselves) on video games, such as Atari or Doom. I mean, why would some of the best minds of our day spend hours tackling how to be better at video games?
@@ -30,8 +30,8 @@
 &lt;/p&gt;
 
 </description>
-      <pubDate>Tue, 06 Dec 2016 00:00:00 +0000</pubDate>
-      <dc:date>2016-12-06T00:00:00+00:00</dc:date>
+      <pubDate>Thu, 15 Dec 2016 00:00:00 +0000</pubDate>
+      <dc:date>2016-12-15T00:00:00+00:00</dc:date>
     </item>
     <item>
       <title>Great Podcasts I Recommend</title>
@@ -278,6 +278,6 @@
       <pubDate>Mon, 06 Jun 2016 00:00:00 +0000</pubDate>
       <dc:date>2016-06-06T00:00:00+00:00</dc:date>
     </item>
-    <dc:date>2016-12-06T00:00:00+00:00</dc:date>
+    <dc:date>2016-12-15T00:00:00+00:00</dc:date>
   </channel>
 </rss>
