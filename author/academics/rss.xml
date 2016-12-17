@@ -28,7 +28,7 @@
 
 <p>Second, games provide a visual representation of an environment. When humans play games, they learn how to play and make decisions based on what they see on the screen. Cameras are machines’ equivalent of human eyes, capturing a representation of the environment as an image, and machine learning has been successfully done to detect objects in the images. Thus, for humans and these machine learning models, the input is the raw pixels from images. For the task of deep reinforcement learning, most games provide a visual representation capturing most of the state of the game. Like how humans learn to play games, the goal is to use deep reinforcement learning and allow machines only use the visual representation to successfully complete the game. This is often referred to as end-to-end training.</p>
 
-<p>(CAD)2RL is one recent example where researchers, using deep reinforcement learning, trained a drone to navigate through corridors using only simulation images and achieved decent success on flying through the hallways of Cory Hall. By using simulation images, the authors exposed the drone to many complex environments and were able to “reset” the environment when the drone crashed in simulation without any damage to the drone in real life.</p>
+<p>(CAD)2RL is one recent example where researchers, using deep reinforcement learning, trained a drone to navigate through corridors using only simulation images and achieved decent success on flying through the hallways of Cory Hall. By using simulation images, the authors exposed the drone to many complex environments and were able to “reset"the environment when the drone crashed in simulation without any damage to the drone in real life.</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nXBWmzFrj5s" frameborder="0" allowfullscreen></iframe>
 
@@ -40,7 +40,7 @@
 
 <p> A function Q(s,a) over a policy returns an estimate of a total reward we would obtain by taking that action a from state s and then following some optimal policy at the landing state s' let’s call it Q*(s,a). When we have finite states Q-learning converges and finds the optimal policy at every state. However most of the problems we are trying to solve have infinite states hence it is impossible to store these in a table to lookup and converge to an optimal policy. Instead the idea that was discussed in the DeepMind paper [6] was to use a deep neural network to approximate the Q function.</p>
 
-<img src= “/assets/images/per/model_architecture.jpg” />
+<img src= "/assets/images/per/model_architecture.jpg"/>
 
 <p> The idea here now is that given an experience $$(s,a,t,r,s’)$$ we need to approximate $$Q(s,a)$$ using our neural network. We will forward pass it through our network to get predicted Q-values for the state-action pair namely Q(s,a).  Next we need to compare this to our target value hence we will forward pass the landing state s' and compute the target Q value as:</p>
 
@@ -96,12 +96,12 @@ $$i\neq j $$
 
 <p>Vizdoom is an reinforcement learning based research platform that lets you implement intelligent agents that can play doom given only screen images from the game play. </p>
 
-<img src=”/assets/images/per/gameplaysnapshots.jpg” />
+<img src="/assets/images/per/gameplaysnapshots.jpg"/>
 
 
 <p>In this project, we used Vizdoom for a very limited number of tasks since we were only interested in grabbing the raw images of the game play to train and test. In reality, Vizdoom offers a variety of options such as creating your own game scenarios, single and multiplayer gameplay along with many other game environments. Vizdoom also offers API’s for C++ , Python and Java.</p>
 
-<img src=”/assets/images/per/scenarios.jpg” />
+<img src="/assets/images/per/scenarios.jpg"/>
 
 <h3>Deep Learning on Tensorflow and Keras</h3>
 
@@ -121,7 +121,7 @@ We would like to learn from the transitions that doesn’t fit well with our cur
 
 <p>For example in the famous breakout game some states are more important to visit while others are not as important. And important ones are much less frequently seen than the less important ones. Take a look at the following t-SNE visualization of the breakout game states.</p>
 
-<img src=”/assets/images/per/tsne.jpg” />
+<img src="/assets/images/per/tsne.jpg"/>
 
 <p>To quantify transitions that don’t fit well with our current network prediction we will look at the temporal difference (TD) error that simply computes the difference between the target network prediction and q-network prediction to assign a priority over the transitions. The bigger the error the higher the priority.</p>
 
@@ -156,7 +156,7 @@ $$p_i = [TDerror(i) - \epsilon]^\alpha$$
 <h4> Algorithm </h4>
 Here you can see the algorithm that was discussed in the PER paper.
 
-<img src=”/assets/images/per/dqn_algo.jpg” />
+<img src="/assets/images/per/dqn_algo.jpg"/>
 
 <h4>Preprocessing Steps</h4>
 <ol>
@@ -173,7 +173,7 @@ Although the main idea which is to kill monsters and live is the same in each of
 Basic Game
 </p>
 
-<img src=”/assets/images/per/basic.jpg” />
+<img src="/assets/images/per/basic.jpg"/>
 
 <p>
 Goal: Kill the monster in 3 seconds with 1 shot
@@ -188,7 +188,7 @@ Metrics:
 Defend the Line Game
 </p>
 
-<img src=”/assets/images/per/defend_the_line.jpg” />
+<img src="/assets/images/per/defend_the_line.jpg"/>
 
 <p>
 Goal: Kill 16 monsters
@@ -233,7 +233,7 @@ For the entirety of this section, I will focus on the game defend the line since
 <p>Performance differences between the baseline DQN model and DDQN with Prioritized Experience Replay show that Prioritized Experience Replay enables faster learning and higher performance.</p>
 
 
-          	<img src=“/assets/images/per/reward_comparison.jpg” />
+          	<img src"/assets/images/per/reward_comparison.jpg"/>
 <p>
 The plots above show that given the same amount of training time, double dqn model converges to much faster than the baseline model to higher rewards. Baseline model gets stuck around a reward of 10 while the game expects us to achieve a reward of 15 (Kill all monsters and die).
 </p>
@@ -243,10 +243,10 @@ Our results from training a prioritized experience replay on ddqn for defend the
 
 <h3> Final Thoughts and Future Work </h3>
 <p>
-Prioritized Experience Replay is a method that rewards an agent for exploring its environment. Intuitively, by encouraging more exploration, the reinforcement learning agent will stumble onto novel kinds of environments that allow for greater rewards. Using Prioritized Experience Replay, the agent trains more frequently on experiences that yielded “unexpected” rewards. Our results from training a DDQN model with Prioritized Experience Replay confirm that this direction is promising.
+Prioritized Experience Replay is a method that rewards an agent for exploring its environment. Intuitively, by encouraging more exploration, the reinforcement learning agent will stumble onto novel kinds of environments that allow for greater rewards. Using Prioritized Experience Replay, the agent trains more frequently on experiences that yielded “unexpected"rewards. Our results from training a DDQN model with Prioritized Experience Replay confirm that this direction is promising.
 </p>
 <p>
-For future work, we would like to evaluate Prioritized Experience Replay(PER) on more complicated game modes of Doom such as “deathmatch.” In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since ddqn training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
+For future work, we would like to evaluate Prioritized Experience Replay(PER) on more complicated game modes of Doom such as “deathmatch."In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since ddqn training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
 </p>
 
 <h3> Team Contributions </h3>
