@@ -18,7 +18,11 @@
 	  <pubDate>2016-12-15T00:00:00+00:00</pubDate>
 	  <guid>//294-per-doom</guid>
 	  <description><![CDATA[
-	     <h3>Why play video games?</h3>
+	     <p>
+  <i>By Brian Su, Cem Koc, and Can Koc (Echochrome)</i>
+</p>
+
+<h3>Why play video games?</h3>
 <p>
   You may wonder why companies like Google and Facebook have research teams that try to outperform others (and themselves) on video games, such as Atari or Doom. I mean, why would some of the best minds of our day spend hours tackling how to be better at video games?
 </p>
@@ -36,6 +40,14 @@
 </p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nXBWmzFrj5s" frameborder="0" allowfullscreen></iframe>
+
+<h3>Deep Learning on Tensorflow and Keras</h3>
+
+<img src=”https://blog.keras.io/img/keras-tensorflow-logo.jpg”>
+
+<p>
+Tensorflow is an open source software library for numerical computation developed by researchers at Google. Unfortunately, Tensorflow can be quite challenging to pick up for beginners. In this work, we use Keras, developed by another Googler Francois Chollet, which is a wrapper library for Tensorflow and Theano, and is much easier to use and understand. By using Keras, we make the trade-off for accessibility over nice Tensorflow features such as Tensorboard, which allows you to visualize the performance of models while training.
+</p>
 
 	  ]]></description>
 	</item>
