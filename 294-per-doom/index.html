@@ -370,47 +370,17 @@ For future work, we would like to evaluate Prioritized Experience Replay(PER) on
 
 <p>Brian Su worked on implementing the ddqn and prioritized experience replay with Cem Koc. He also worked on formatting the report to turn it into a blog post.</p>
 
-<pre><code>var c = new Sketch.create({autoclear: false}),
-    bigCircle = 50,
-    littleCircle = 5,
-    // The velocity value determines how much to move the spinner head (in radians).
-    velocity = 0.105,
-    hue = 0,
-    // The alpha value below determines the length of the spinner&#39;s tail.
-    bg = &#39;rgba(40,40,40,.075)&#39;;
-    Spinner = function() {};
-
-Spinner.prototype.setup = function() {
-  this.x = c.width / 2;
-  this.y = c.height / 2 - bigCircle;
-  this.rotation = 0;
-}
-Spinner.prototype.update = function() {
-  this.rotation += velocity;
-  this.rotation = this.rotation % TWO_PI;
-  this.x = c.width /2 + cos(this.rotation) * bigCircle;
-  this.y = c.height / 2 + sin(this.rotation) * bigCircle;
-}
-Spinner.prototype.draw = function() {
-  c.fillStyle = &#39;hsl(&#39;+hue+&#39;,50%,50%)&#39;;
-  c.beginPath();
-  c.arc(this.x, this.y, littleCircle, 0, TWO_PI);
-  c.fill();
-  c.closePath();
-}
-c.setup = function() {
-  spinner = new Spinner();
-  spinner.setup();
-}
-c.update = function() {
-  spinner.update();
-  hue = ++hue % 360;
-}
-c.draw = function() {
-  spinner.draw();
-  c.fillStyle = bg;
-  c.fillRect(0,0,c.width,c.height);
-}
+<pre><code>
+def remember(self, transition, game_over):
+  transition_powered_priority = 1e-7 ** self.alpha
+  if self.memory:
+    transition_powered_priority = np.max(self.memory, 0)[2]
+  self.sum_powered_priorities += transition_powered_priority
+  # insert the transition with its priority into replay memory
+  self.memory.append([transition, game_over, transition_powered_priority])
+  if len(self.memory) > self.max_memory:
+    self.sum_powered_priorities -= self.memory[0][2]
+    def self.memory[0]
 </code></pre>
 
 
