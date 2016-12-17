@@ -155,9 +155,52 @@
 <p> A function Q(s,a) over a policy returns an estimate of a total reward we would obtain by taking that action a from state s and then following some optimal policy at the landing state s' let’s call it Q*(s,a). When we have finite states Q-learning converges and finds the optimal policy at every state. However most of the problems we are trying to solve have infinite states hence it is impossible to store these in a table to lookup and converge to an optimal policy. Instead the idea that was discussed in the DeepMind paper [6] was to use a deep neural network to approximate the Q function.</p>
 
 [ Picture of a deep q-network]
-<img src=”../assets/images/per/model_architecture.jpg” />
+<img src="/assets/images/per/model_architecture.jpg" />
 
 <p> The idea here now is that given an experience (s,a,t,r,s') we need to approximate Q(s,a)using our neural network. We will forward pass it through our network to get predicted Q-values for the state-action pair namely Q(s,a).  Next we need to compare this to our target value hence we will forward pass the landing state s' and compute the target Q value as:</p>
+
+<pre><code>var c = new Sketch.create({autoclear: false}),
+    bigCircle = 50,
+    littleCircle = 5,
+    // The velocity value determines how much to move the spinner head (in radians).
+    velocity = 0.105,
+    hue = 0,
+    // The alpha value below determines the length of the spinner&#39;s tail.
+    bg = &#39;rgba(40,40,40,.075)&#39;;
+    Spinner = function() {};
+
+Spinner.prototype.setup = function() {
+  this.x = c.width / 2;
+  this.y = c.height / 2 - bigCircle;
+  this.rotation = 0;
+}
+Spinner.prototype.update = function() {
+  this.rotation += velocity;
+  this.rotation = this.rotation % TWO_PI;
+  this.x = c.width /2 + cos(this.rotation) * bigCircle;
+  this.y = c.height / 2 + sin(this.rotation) * bigCircle;
+}
+Spinner.prototype.draw = function() {
+  c.fillStyle = &#39;hsl(&#39;+hue+&#39;,50%,50%)&#39;;
+  c.beginPath();
+  c.arc(this.x, this.y, littleCircle, 0, TWO_PI);
+  c.fill();
+  c.closePath();
+}
+c.setup = function() {
+  spinner = new Spinner();
+  spinner.setup();
+}
+c.update = function() {
+  spinner.update();
+  hue = ++hue % 360;
+}
+c.draw = function() {
+  spinner.draw();
+  c.fillStyle = bg;
+  c.fillRect(0,0,c.width,c.height);
+}
+</code></pre>
 
 
         </section>
