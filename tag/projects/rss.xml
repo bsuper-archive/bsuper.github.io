@@ -24,9 +24,9 @@
 
 <p>Turns out, the eventual goal is to use reinforcement learning to allow robots and other machines to interact with complex environments. In short, games are a simplified abstraction of complex environments machines have to learn and adapt to. Once we have successfully trained a model to play a game, applying the model to a real-world problem is a natural extension. For example, Google’s DeepMind has trained reinforcement learning models to master Atari games, beat a 9-dan Go professional, and, more recently, reduced the power consumption of Google’s data centers by 15%. Moreover, games provide two advantages when used for deep reinforcement learning.</p>
 
-<p>First, since machines can quickly run through games, we are able to accumulate much more data from playing games compared to attempting to collect data in the real-world. In particular, this is beneficial when using deep neural networks they require lots of data to be able to perform successfully.</p>
+<p>First, since machines can quickly run through games, we are able to accumulate much more data from playing games compared to attempting to collect data in the real-world. In particular, this is beneficial when using deep neural networks as they require lots of data to train.</p>
 
-<p>Second, games provide a visual representation of an environment. When humans play games, they learn how to play and make decisions based on what they see on the screen. Cameras are machines’ equivalent of human eyes, capturing a representation of the environment as an image, and machine learning has been successfully done to detect objects in the images. Thus, for humans and these machine learning models, the input is the raw pixels from images. For the task of deep reinforcement learning, most games provide a visual representation capturing most of the state of the game. Like how humans learn to play games, the goal is to use deep reinforcement learning and allow machines only use the visual representation to successfully complete the game. This is often referred to as end-to-end training.</p>
+<p>Second, games provide a visual representation of an environment. When humans play games, they learn how to play and make decisions based on what they see on the screen. Cameras are machines’ equivalent of human eyes, capturing a representation of the environment as an image, and, using machine learning, we can detect objects in the images. Thus, for humans and these machine learning models, the input is the raw pixels from images. For the task of deep reinforcement learning, most games provide a visual representation capturing most of the state of the game. Like how humans learn to play games, the goal is to use deep reinforcement learning and allow machines only use the visual representation to successfully complete the game. This is often referred to as end-to-end training.</p>
 
 <p>(CAD)2RL is one recent example where researchers, using deep reinforcement learning, trained a drone to navigate through corridors using only simulation images and achieved decent success on flying through the hallways of Cory Hall. By using simulation images, the authors exposed the drone to many complex environments and were able to “reset"the environment when the drone crashed in simulation without any damage to the drone in real life.</p>
 
@@ -55,13 +55,13 @@ However one problem that authors of the DeepMind paper realised was that using a
 
 <h4> Learning from Experience </h4>
 
-<p>One problem you might have guessed is that the experiences we use (s,a,t,r,s') to train our network tend to be sequential in video games hence most of the times we will see same or very similar states and states will be highly correlated. This means that we will update the q-values of experiences that are abundant but unimportant more often than important experiences. Another big problem is that as soon as we encounter an experience and use it to update our weights in the network we discard it. This is bad because less important experiences might come to us more often than more important experiences which will cause our network to  overfit.</p>
+<p>One problem you might have guessed is that the experiences $$(s,a,t,r,s')$$ we use to train our network tend to be sequential in video games hence most of the times we will see the same or very similar states and states will be highly correlated. This means that we will update the q-values of experiences that are abundant but unimportant more often than important experiences. Another big problem is that as soon as we encounter an experience and use it to update our weights in the network we discard it. This is bad because less important experiences might come to us more often than more important experiences which will cause our network to  overfit.</p>
 
 <p>To solve this, this paper proposes that we simply remember experiences by storing them in a replay memory and randomly selecting experiences from the replay memory to train our network instead of using the most recent one. This is very similar to what is done usually in supervised machine learning tasks.</p>
 
 <h4> Two Separate Networks </h4>
 
-<p> Currently in our loss calculations after we are using our deep q-network two times. First time in when we are computing the predicted q-value Q(s,a) and second time to get the target q-value in r+maxa'Q(s',a'). The problem here is that since target q-value depends on the our current network state the target will shift each time we update our network. As it is shown in the original DeepMind paper this leads to oscillations in the q-values. To solve this they propose implementing a target q-network that is frozen in time so when we are using experiences to update our q-network the target network is used to get the target q-value and q-network is used to get the predicted q-value. This provides stability over time. In reality, target network is also going to be updated by copying the weights from our q-network but much less frequently.</p>
+<p> Currently in our loss calculations after we are using our deep q-network two times. First time in when we are computing the predicted q-value $$Q(s,a)$$ and second time to get the target q-value in $$r+maxa'Q(s',a')$$. The problem here is that since target q-value depends on the our current network state the target will shift each time we update our network. As it is shown in the original DeepMind paper this leads to oscillations in the q-values. To solve this they propose implementing a target q-network that is frozen in time so when we are using experiences to update our q-network the target network is used to get the target q-value and q-network is used to get the predicted q-value. This provides stability over time. In reality, target network is also going to be updated by copying the weights from our q-network but much less frequently.</p>
 
 
 <h3> Double Deep Q Learning </h3>
@@ -87,7 +87,7 @@ $$i\neq j $$
 
 	<p> $$Q^*(s,a) = r + \gamma Q^T(s', argmax_{a}Q(s',a))$$ </p>
 
-<p>QT is computed from the target q-network and Q is computed from the q-network. This makes the learning process much more stable as it is shown in the paper that separating the target q-value computation by using two different q-value functions makes it unbiased.<\p>
+<p>QT is computed from the target q-network and Q is computed from the q-network. This makes the learning process much more stable as it is shown in the paper that separating the target q-value computation by using two different q-value functions makes it unbiased.</p>
 
 
 <h3> VIZDoom </h3>
@@ -125,11 +125,11 @@ We would like to learn from the transitions that doesn’t fit well with our cur
 
 <p>To quantify transitions that don’t fit well with our current network prediction we will look at the temporal difference (TD) error that simply computes the difference between the target network prediction and q-network prediction to assign a priority over the transitions. The bigger the error the higher the priority.</p>
 
-<p>$$TDerror = |Q(s,a) - Q^*(s,a)|$$ where $$Q*(s,a) = r + \gamma Q^T(s', argmax_aQ(s',a))$$</p>
+<p>$$TD_error = |Q(s,a) - Q^*(s,a)|$$ where $$Q*(s,a) = r + \gamma Q^T(s', argmax_aQ(s',a))$$</p>
 
 <p>Notice here that we are using DDQN update to make our learning more stable as it was also used in the paper by Schaul et al.</p>
 
-<p>Previously we uniformly sampled experiences from the replay memory but this time in order to account for the priority of each experience we will translate this priority into a probability and we will sample from the replay memory using this probability distribution. An experience i has the following probability of being picked from the replay memory:</p>
+<p>Previously we uniformly sampled experiences from the replay memory but this time in order to account for the priority of each experience we will translate this priority into a probability and we will sample from the replay memory using this probability distribution. An experience $$i$$ has the following probability of being picked from the replay memory:</p>
 
 <p>
 $$ P_i = \frac{p_i}{\sum_{k}p_k}$$
@@ -140,7 +140,7 @@ where $$p_i$$ represents the proportional priority of experience i:
 </p>
 
 <p>
-$$p_i = [TDerror(i) - \epsilon]^\alpha$$
+$$p_i = [TD_error(i) - \epsilon]^\alpha$$
 </p>
 
 
@@ -175,35 +175,60 @@ Here you can see the algorithm that was discussed in the PER paper.
 
 <h4> Training and Metrics </h4>
 
-<p>We trained our models on two different doom games: Basic and Defend the Line.
-Although the main idea which is to kill monsters and live is the same in each of these games, they are different in what metrics we used to measure performance./<p>
+<p>We trained our models on two different doom games: Basic and Defend the Line. Each of these game modes has a different way of quantifying rewards and penalties.</p>
 
-<p>
+<h5>
 Basic Game
-</p>
+</h5>
 
 <img src="/assets/images/per/basic.jpg"/>
 
 <p>
-Goal: Kill the monster in 3 seconds with 1 shot
-Metrics:
-+101 reward for killing the monster
--5 reward for missing a shot
--1 reward for every 0.028 seconds that passes
+  <ul>
+    <li>
+      Goal: Kill the monster in 3 seconds with 1 shot
+    </li>
+    <li>
+      Metrics:
+      <ul>
+        <li>
+          +101 reward for killing the monster
+        </li>
+        <li>
+          -5 reward for missing a shot
+        </li>
+        <li>
+          -1 reward for every 0.028 seconds that passes
+        </li>
+      </ul>
+    </li>
+  </ul>
 </p>
 
 
-<p>
+<h5>
 Defend the Line Game
-</p>
+</h5>
 
 <img src="/assets/images/per/defend_the_line.jpg"/>
 
 <p>
-Goal: Kill 16 monsters
-Metrics:
-+1 for killing a monster
--1 for getting killed
+  <ul>
+    <li>
+      Goal: Kill 16 monsters
+    </li>
+    <li>
+      Metrics:
+      <ul>
+        <li>
+          +1 for killing a monster
+        </li>
+        <li>
+          -1 for getting killed
+        </li>
+      </ul>
+    </li>
+  </ul>
 </p>
 
 <p>One important difference to mention here is that defend the line game trains much faster than basic. The reason for that is, there are more monsters and the agent gains rewards more frequently than in basic. We will see how this difference affects the performance of our models in the next section.</p>
@@ -247,7 +272,7 @@ For the entirety of this section, I will focus on the game defend the line since
 The plots above show that given the same amount of training time, double dqn model converges to much faster than the baseline model to higher rewards. Baseline model gets stuck around a reward of 10 while the game expects us to achieve a reward of 15 (Kill all monsters and die).
 </p>
 <p>
-Our results from training a prioritized experience replay on ddqn for defend the line game show that we obtain higher rewards, faster training times and less stochastic average return performance compared to the baseline dqn model. Given the complicated nature of Doom with a variety of maps, items to be picked up (health kits) and different monsters to kill, we expect prioritized experience replay to have a noticeable impact on complex game modes such as “deathmatch.”
+Our results from training a prioritized experience replay on DDQN for defend the line game show that we obtain higher rewards, faster training times and less stochastic average return performance compared to the baseline dqn model. Given the complicated nature of Doom with a variety of maps, items to be picked up (health kits) and different monsters to kill, we expect prioritized experience replay to have a noticeable impact on complex game modes such as “deathmatch.”
 </p>
 
 <h3> Final Thoughts and Future Work </h3>
@@ -255,14 +280,14 @@ Our results from training a prioritized experience replay on ddqn for defend the
 Prioritized Experience Replay is a method that rewards an agent for exploring its environment. Intuitively, by encouraging more exploration, the reinforcement learning agent will stumble onto novel kinds of environments that allow for greater rewards. Using Prioritized Experience Replay, the agent trains more frequently on experiences that yielded “unexpected"rewards. Our results from training a DDQN model with Prioritized Experience Replay confirm that this direction is promising.
 </p>
 <p>
-For future work, we would like to evaluate Prioritized Experience Replay (PER) on more complicated game modes of Doom such as “deathmatch."In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since ddqn training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
+For future work, we would like to evaluate Prioritized Experience Replay (PER) on more complicated game modes of Doom such as “deathmatch."In addition, we plan to compare that with recent work on “asynchronous advantage actor critic (A3C) on Doom”. Based on its paper, A3C should allow us to reduce our reliance on GPUs. Since DDQN training with PER is a GPU memory intensive process, we think this would be an interesting  comparison.
 </p>
 
 <h3> Team Contributions </h3>
 
 <h5>Can Koc (⅓ of the work)</h5>
 
-<p>Can mainly worked on training the baseline and ddqn with PER models on the two doom games. He also worked on getting the reward plots and performance metrics. He also worked with Cem to build a gpu computer from scratch.</p>
+<p>Can mainly worked on training the baseline and DDQN with PER models on the two doom games. He also worked on getting the reward plots and performance metrics. He also worked with Cem to build a gpu computer from scratch.</p>
 
 <h5>Cem Koc (⅓ of the work) </h5>
 
@@ -270,7 +295,7 @@ For future work, we would like to evaluate Prioritized Experience Replay (PER) o
 
 <h5>Brian Su (⅓ of the work)</h5>
 
-<p>Brian Su worked on implementing the ddqn and prioritized experience replay with Cem Koc. He also worked on formatting the report to turn it into a blog post.</p>
+<p>Brian Su worked on implementing the DDQN and prioritized experience replay with Cem Koc. He also worked on formatting the report to turn it into a blog post.</p>
 
 	  ]]></description>
 	</item>
